@@ -6,6 +6,8 @@
 
   let profile;
 
+  $: isAdmin = $user?.role === "admin";
+
   onMount(() => {
     // If no token or no user, redirect to home
     const unsubscribe = user.subscribe((value) => {
@@ -32,12 +34,13 @@
           <div class="card-body">
             <p><strong>Email:</strong> {profile.email}</p>
             <p><strong>Role:</strong> {profile.role}</p>
-            <p><strong>Bookings:</strong> {profile.bookingCount}</p>
+            {#if !isAdmin}
+              <p><strong>Bookings:</strong> {profile.bookingCount}</p>
 
-            <!-- Optional: link to booking history -->
-            <a href="/booking" class="btn btn-outline-primary mt-3">
-              View Bookings
-            </a>
+              <a href="/my-bookings" class="btn btn-outline-primary mt-3">
+                View Bookings
+              </a>
+            {/if}
           </div>
         </div>
       </div>
