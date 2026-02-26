@@ -111,7 +111,7 @@
               type="button"
               on:click|stopPropagation={toggleAccount}
             >
-              {$user.email}
+              {$user?.email}
             </button>
 
             {#if accountOpen}
@@ -191,7 +191,7 @@
             class="btn btn-outline-secondary w-100 dropdown-toggle"
             on:click={toggleAccount}
           >
-            {$user.email}
+            {$user?.email}
           </button>
 
           {#if accountOpen}
