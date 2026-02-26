@@ -32,8 +32,8 @@ declare module '$env/static/private' {
 	export const NODE: string;
 	export const INIT_CWD: string;
 	export const PYENV_ROOT: string;
-	export const SHELL: string;
 	export const TERM: string;
+	export const SHELL: string;
 	export const TMPDIR: string;
 	export const npm_config_global_prefix: string;
 	export const VSCODE_PYTHON_AUTOACTIVATE_GUARD: string;
@@ -76,8 +76,8 @@ declare module '$env/static/private' {
 	export const npm_package_version: string;
 	export const XPC_SERVICE_NAME: string;
 	export const VSCODE_INJECTION: string;
-	export const HOME: string;
 	export const SHLVL: string;
+	export const HOME: string;
 	export const VSCODE_GIT_ASKPASS_MAIN: string;
 	export const PYTHON_BASIC_REPL: string;
 	export const npm_config_cache: string;
@@ -130,8 +130,8 @@ declare module '$env/dynamic/private' {
 		NODE: string;
 		INIT_CWD: string;
 		PYENV_ROOT: string;
-		SHELL: string;
 		TERM: string;
+		SHELL: string;
 		TMPDIR: string;
 		npm_config_global_prefix: string;
 		VSCODE_PYTHON_AUTOACTIVATE_GUARD: string;
@@ -174,8 +174,8 @@ declare module '$env/dynamic/private' {
 		npm_package_version: string;
 		XPC_SERVICE_NAME: string;
 		VSCODE_INJECTION: string;
-		HOME: string;
 		SHLVL: string;
+		HOME: string;
 		VSCODE_GIT_ASKPASS_MAIN: string;
 		PYTHON_BASIC_REPL: string;
 		npm_config_cache: string;

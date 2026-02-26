@@ -54,7 +54,7 @@
     checkOut: null,
   };
 
-  // 🔁 React only when dates actually change
+  // React only when dates actually change
   $: {
     if (
       form.checkInDate &&

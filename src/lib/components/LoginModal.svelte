@@ -14,6 +14,8 @@
   let password = "";
   let error = "";
 
+  let loading = false;
+
   async function submit() {
     error = "";
     try {
@@ -26,6 +28,8 @@
     } catch (e) {
       error = e.message;
       showToast(error, "error");
+    } finally {
+      loading = false;
     }
   }
 </script>
@@ -59,7 +63,12 @@
         <button class="btn btn-secondary" on:click={() => dispatch("close")}>
           Cancel
         </button>
-        <button class="btn btn-danger" on:click={submit}> Login </button>
+        <button class="btn btn-danger" on:click={submit} disabled={loading}>
+          {#if loading}
+            <span class="spinner-border spinner-border-sm me-2"></span>
+          {/if}
+          Login
+        </button>
         <hr />
 
         <a href={GOOGLE_LOGIN_URL} class="w-100 mb-2">

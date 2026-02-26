@@ -27,7 +27,7 @@ export {};
 
 declare module "$app/types" {
 	export interface AppTypes {
-		RouteId(): "/" | "/access" | "/dining" | "/experience" | "/oauth-success" | "/profile" | "/suites";
+		RouteId(): "/" | "/access" | "/dining" | "/experience" | "/my-bookings" | "/oauth-success" | "/profile" | "/suites";
 		RouteParams(): {
 			
 		};
@@ -36,11 +36,12 @@ declare module "$app/types" {
 			"/access": Record<string, never>;
 			"/dining": Record<string, never>;
 			"/experience": Record<string, never>;
+			"/my-bookings": Record<string, never>;
 			"/oauth-success": Record<string, never>;
 			"/profile": Record<string, never>;
 			"/suites": Record<string, never>
 		};
-		Pathname(): "/" | "/access" | "/access/" | "/dining" | "/dining/" | "/experience" | "/experience/" | "/oauth-success" | "/oauth-success/" | "/profile" | "/profile/" | "/suites" | "/suites/";
+		Pathname(): "/" | "/access" | "/access/" | "/dining" | "/dining/" | "/experience" | "/experience/" | "/my-bookings" | "/my-bookings/" | "/oauth-success" | "/oauth-success/" | "/profile" | "/profile/" | "/suites" | "/suites/";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
 		Asset(): "/images/logo.png" | "/robots.txt" | string & {};
 	}

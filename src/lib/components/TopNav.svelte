@@ -120,7 +120,7 @@
                   <a class="dropdown-item" href="/profile"> Profile </a>
                 </li>
                 <li>
-                  <a class="dropdown-item" href="/account/bookings">
+                  <a class="dropdown-item" href="/my-bookings">
                     My Booking
                   </a>
                 </li>
@@ -200,7 +200,7 @@
                 <a class="dropdown-item" href="/profile"> Profile </a>
               </li>
               <li>
-                <a class="dropdown-item" href="/account/bookings">
+                <a class="dropdown-item" href="/my-bookings">
                   My Booking
                 </a>
               </li>
