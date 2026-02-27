@@ -5,7 +5,9 @@
   import { createBooking } from "$lib/services/bookings";
   import { getWeatherRange } from "$lib/services/weather";
   import WeatherModal from "$lib/components/WeatherModal.svelte";
-
+  import { bookingSchema } from "$lib/utils/validationSchemas";
+  import { writable } from "svelte/store"; 
+    
   import { get } from "svelte/store";
 
   export let roomId;
@@ -27,6 +29,27 @@
     boardType: "Breakfast",
     note: "",
   };
+
+  const validationErrors = writable({});
+
+  let isValidForm = false;
+
+  function validateForm() {
+    const { error } = bookingSchema.validate(form, { abortEarly: false });
+    let errors = {};
+    if ( error ) {
+      for (let detail of error.details) {
+        errors[detail.path[0]] = detail.message;
+      }
+    }
+    validationErrors.set(errors);
+    isValidForm = Object.keys(errors).length === 0;
+    return isValidForm;
+  }
+
+  $: if (form) {
+    validateForm();
+  }
 
   // Normalize dates to local noon to avoid timezone issues
   function normalizeDate(dateStr) {
@@ -122,22 +145,17 @@
   }
 
   async function submit() {
+    if (!validateForm()){
+      showToast("Please correct the errors in the form.", "error");
+      return;
+    }
+
     const currentUser = get(user);
     const token = get(accessToken);
 
     if (!currentUser || !token) {
       showToast("Your session expired. Please login again.", "error");
       dispatch("close");
-      return;
-    }
-
-    if (!form.checkInDate || !form.checkOutDate) {
-      showToast("Please select check-in and check-out dates", "error");
-      return;
-    }
-
-    if (new Date(form.checkOutDate) <= new Date(form.checkInDate)) {
-      showToast("Invalid date range selected", "error");
       return;
     }
 
@@ -162,7 +180,8 @@
         showToast("Booking successful 🎉", "success");
         dispatch("close");
       } else {
-        showToast(res?.message || "Booking failed. Please try again.", "error");
+        const errorMessage = res?.message || "Booking failed. Please try again.";
+        showToast(errorMessage, "error")        
       }
     } catch (err) {
       showToast(err.message || "Something went wrong", "error");
@@ -189,34 +208,58 @@
           <div class="col-md-6">
             <input
               class="form-control"
+              class:is-invalid={$validationErrors.firstName}
               placeholder="First name"
               bind:value={form.firstName}
             />
+            {#if $validationErrors.firstName}
+              <div class="invalid-feedback d-block">
+                {$validationErrors.firstName}
+              </div>
+            {/if}
           </div>
 
           <div class="col-md-6">
             <input
               class="form-control"
+              class:is-invalid={$validationErrors.lastName}
               placeholder="Last name"
               bind:value={form.lastName}
             />
+            {#if $validationErrors.lastName}
+              <div class="invalid-feedback d-block">
+                {$validationErrors.lastName}
+              </div>
+            {/if}
           </div>
 
           <div class="col-md-6">
             <input
               class="form-control"
+              class:is-invalid={$validationErrors.phone}
               placeholder="Phone"
               bind:value={form.phone}
             />
+            {#if $validationErrors.phone}
+              <div class="invalid-feedback d-block">
+                {$validationErrors.phone}
+              </div>
+            {/if}
           </div>
 
           <div class="col-md-6">
             <input
               type="email"
               class="form-control"
+              class:is-invalid={$validationErrors.email}
               placeholder="Email"
               bind:value={form.email}
             />
+            {#if $validationErrors.email}
+              <div class="invalid-feedback d-block">
+                {$validationErrors.email}
+              </div>
+            {/if}
           </div>
 
           <div class="col-md-6">
@@ -224,8 +267,14 @@
             <input
               type="date"
               class="form-control"
+              class:is-invalid={$validationErrors.checkInDate}
               bind:value={form.checkInDate}
             />
+            {#if $validationErrors.checkInDate}
+              <div class="invalid-feedback d-block">
+                {$validationErrors.checkInDate}
+              </div>
+            {/if}
           </div>
 
           <div class="col-md-6">
@@ -233,9 +282,15 @@
             <input
               type="date"
               class="form-control"
+              class:is-invalid={$validationErrors.checkOutDate}
               bind:value={form.checkOutDate}
               min={form.checkInDate}
             />
+            {#if $validationErrors.checkOutDate}
+              <div class="invalid-feedback d-block">
+                {$validationErrors.checkOutDate}
+              </div>
+            {/if}
           </div>
 
           {#if form.checkInDate && form.checkOutDate}
@@ -290,8 +345,14 @@
               type="number"
               min="1"
               class="form-control"
+              class:is-invalid={$validationErrors.adults}
               bind:value={form.adults}
             />
+            {#if $validationErrors.adults}
+              <div class="invalid-feedback d-block">
+                {$validationErrors.adults}
+              </div>
+            {/if}
           </div>
 
           <div class="col-md-4">
@@ -300,25 +361,46 @@
               type="number"
               min="0"
               class="form-control"
+              class:is-invalid={$validationErrors.children}
               bind:value={form.children}
             />
+            {#if $validationErrors.children}
+              <div class="invalid-feedback d-block">
+                {$validationErrors.children}
+              </div>
+            {/if}
           </div>
 
           <div class="col-md-4">
             <label class="form-label">Board</label>
-            <select class="form-select" bind:value={form.boardType}>
+            <select
+              class="form-select"
+              class:is-invalid={$validationErrors.boardType}
+              bind:value={form.boardType}
+            >
               <option>Breakfast</option>
               <option>Half-board</option>
             </select>
+            {#if $validationErrors.boardType}
+              <div class="invalid-feedback d-block">
+                {$validationErrors.boardType}
+              </div>
+            {/if}
           </div>
 
           <div class="col-12">
             <textarea
               class="form-control"
+              class:is-invalid={$validationErrors.note}
               rows="3"
               placeholder="Special requests (optional)"
               bind:value={form.note}
             />
+            {#if $validationErrors.note}
+              <div class="invalid-feedback d-block">
+                {$validationErrors.note}
+              </div>
+            {/if}
           </div>
         </div>
       </div>
@@ -327,7 +409,7 @@
         <button class="btn btn-secondary" on:click={() => dispatch("close")}>
           Cancel
         </button>
-        <button class="btn btn-danger" on:click={submit}>
+        <button class="btn btn-danger" on:click={submit} disabled={!isValidForm}>
           Confirm Booking
         </button>
       </div>
