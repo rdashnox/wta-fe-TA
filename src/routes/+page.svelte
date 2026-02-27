@@ -12,7 +12,7 @@
         <div class="col-lg-6">
           <!-- Bootstrap: Column-->
           <article class="index-service-card">
-            <a href="suites.html" data-page-id="suites">
+            <a href="/suites" data-page-id="suites">
               <img
                 src="https://images.pexels.com/photos/31817162/pexels-photo-31817162.jpeg"
                 alt="Luxurious suites"
@@ -33,7 +33,7 @@
         <div class="col-lg-6">
           <!-- Bootstrap: Column-->
           <article class="index-service-card">
-            <a href="dining.html" data-page-id="dining">
+            <a href="/dining" data-page-id="dining">
               <img
                 src="https://images.pexels.com/photos/1267320/pexels-photo-1267320.jpeg"
                 alt="Dining experience"
@@ -54,7 +54,7 @@
         <div class="col-lg-6">
           <!-- Bootstrap: Column-->
           <article class="index-service-card">
-            <a href="experience.html" data-page-id="experience">
+            <a href="/experience" data-page-id="experience">
               <img
                 src="https://images.pexels.com/photos/6908362/pexels-photo-6908362.jpeg"
                 alt="Spa and wellness experience"
@@ -77,7 +77,7 @@
         <div class="col-lg-6">
           <!-- Bootstrap: Column-->
           <article class="index-service-card">
-            <a href="access.html" data-page-id="access">
+            <a href="/access" data-page-id="access">
               <img
                 src="https://images.pexels.com/photos/16253098/pexels-photo-16253098.jpeg"
                 alt="Hotel access location"

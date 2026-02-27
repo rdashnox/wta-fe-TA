@@ -4,10 +4,15 @@
   import { user, accessToken } from "$lib/stores/auth";
   import { showToast } from "$lib/stores/toast";
 
+  import { API_BASE } from "$lib/api/config.js";
+
+  const GOOGLE_LOGIN_URL = `${API_BASE}/auth/google`;
+
   const dispatch = createEventDispatcher();
   let email = "";
   let password = "";
   let error = "";
+  let loading = false;
 
   async function submit() {
     error = "";
@@ -23,6 +28,8 @@
       error = e.message;
 
       showToast(error, "error");
+    } finally {
+      loading = false;
     }
   }
 </script>
@@ -56,10 +63,16 @@
         <button class="btn btn-secondary" on:click={() => dispatch("close")}>
           Cancel
         </button>
-        <button class="btn btn-danger" on:click={submit}> Register </button>
+        <button class="btn btn-danger" on:click={submit} disabled={loading}>
+          {#if loading}
+            <span class="spinner-border spinner-border-sm me-2"></span>
+          {/if}
+          Register
+        </button>
+
         <hr />
 
-        <a href="http://localhost:3000/api/auth/google" class="w-100 mb-2">
+        <a href={GOOGLE_LOGIN_URL} class="w-100 mb-2">
           <button
             type="button"
             class="btn btn-google d-flex align-items-center justify-content-center w-100"

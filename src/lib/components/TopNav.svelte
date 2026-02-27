@@ -2,11 +2,18 @@
   import { onMount } from "svelte";
   import LoginModal from "$lib/components/LoginModal.svelte";
   import RegisterModal from "$lib/components/RegisterModal.svelte";
-  import { user, isAuthenticated, authUpdated, accessToken } from "$lib/stores/auth";
+  import {
+    user,
+    isAuthenticated,
+    authUpdated,
+    accessToken,
+  } from "$lib/stores/auth";
 
   let accountOpen = false;
 
   $: $authUpdated;
+
+  $: isAdmin = $user?.role === "admin";
 
   let showLogin = false;
   let showRegister = false;
@@ -111,19 +118,25 @@
               type="button"
               on:click|stopPropagation={toggleAccount}
             >
-              {$user.email}
+              {$user?.email}
             </button>
 
             {#if accountOpen}
               <ul class="dropdown-menu dropdown-menu-end show">
                 <li>
-                  <a class="dropdown-item" href="/account/profile"> Profile </a>
+                  <a class="dropdown-item" href="/profile"> Profile </a>
                 </li>
-                <li>
-                  <a class="dropdown-item" href="/account/bookings">
-                    My Booking
-                  </a>
-                </li>
+                {#if isAdmin}
+                  <li>
+                    <a class="dropdown-item" href="/admin"> Dashboard </a>
+                  </li>
+                {:else}
+                  <li>
+                    <a class="dropdown-item" href="/my-bookings">
+                      My Booking
+                    </a>
+                  </li>
+                {/if}
                 <li><hr class="dropdown-divider" /></li>
                 <li>
                   <button
@@ -159,6 +172,7 @@
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title">Menu</h5>
+    <!-- svelte-ignore a11y_consider_explicit_label -->
     <button class="btn-close" data-bs-dismiss="offcanvas"></button>
   </div>
 
@@ -191,19 +205,23 @@
             class="btn btn-outline-secondary w-100 dropdown-toggle"
             on:click={toggleAccount}
           >
-            {$user.email}
+            {$user?.email}
           </button>
 
           {#if accountOpen}
             <ul class="dropdown-menu show w-100 mt-2 position-static">
               <li>
-                <a class="dropdown-item" href="/account/profile"> Profile </a>
+                <a class="dropdown-item" href="/profile"> Profile </a>
               </li>
-              <li>
-                <a class="dropdown-item" href="/account/bookings">
-                  My Booking
-                </a>
-              </li>
+              {#if isAdmin}
+                <li>
+                  <a class="dropdown-item" href="/admin"> Dashboard </a>
+                </li>
+              {:else}
+                <li>
+                  <a class="dropdown-item" href="/my-bookings"> My Booking </a>
+                </li>
+              {/if}
               <li><hr class="dropdown-divider" /></li>
               <li>
                 <button

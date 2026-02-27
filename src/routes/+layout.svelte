@@ -2,6 +2,8 @@
   import "../app.css";
   import { page } from "$app/stores";
   import { afterUpdate } from "svelte";
+  import { navigating } from "$app/stores";
+  import { fly, fade } from "svelte/transition";
 
   import TopNav from "$lib/components/TopNav.svelte";
   import Footer from "$lib/components/Footer.svelte";
@@ -34,6 +36,12 @@
   })();
 </script>
 
+{#if $navigating}
+  <div class="global-loader" in:fade out:fade>
+    <div class="spinner"></div>
+  </div>
+{/if}
+
 <header class={`header ${headerConfig?.class ?? ""}`}>
   <TopNav />
 
@@ -46,6 +54,8 @@
 </header>
 
 <Toast />
-<slot />
+<div class="flex-fill">
+  <slot />
+</div>
 
 <Footer />

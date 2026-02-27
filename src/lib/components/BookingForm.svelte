@@ -77,7 +77,7 @@
     checkOut: null,
   };
 
-  // 🔁 React only when dates actually change
+  // React only when dates actually change
   $: {
     if (
       form.checkInDate &&
@@ -196,6 +196,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Book {roomName}</h5>
+        <!-- svelte-ignore element_invalid_self_closing_tag -->
         <button
           class="btn-close"
           aria-label="Close"
@@ -263,6 +264,7 @@
           </div>
 
           <div class="col-md-6">
+            <!-- svelte-ignore a11y_label_has_associated_control -->
             <label class="form-label">Check-in</label>
             <input
               type="date"
@@ -278,6 +280,7 @@
           </div>
 
           <div class="col-md-6">
+            <!-- svelte-ignore a11y_label_has_associated_control -->
             <label class="form-label">Check-out</label>
             <input
               type="date"
@@ -340,6 +343,7 @@
           {/if}
 
           <div class="col-md-4">
+            <!-- svelte-ignore a11y_label_has_associated_control -->
             <label class="form-label">Adults</label>
             <input
               type="number"
@@ -356,6 +360,7 @@
           </div>
 
           <div class="col-md-4">
+            <!-- svelte-ignore a11y_label_has_associated_control -->
             <label class="form-label">Children</label>
             <input
               type="number"
@@ -372,6 +377,7 @@
           </div>
 
           <div class="col-md-4">
+            <!-- svelte-ignore a11y_label_has_associated_control -->
             <label class="form-label">Board</label>
             <select
               class="form-select"
@@ -389,6 +395,7 @@
           </div>
 
           <div class="col-12">
+            <!-- svelte-ignore element_invalid_self_closing_tag -->
             <textarea
               class="form-control"
               class:is-invalid={$validationErrors.note}

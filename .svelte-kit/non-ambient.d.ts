@@ -27,20 +27,23 @@ export {};
 
 declare module "$app/types" {
 	export interface AppTypes {
-		RouteId(): "/" | "/dining" | "/experience" | "/oauth-success" | "/profile" | "/suites";
+		RouteId(): "/" | "/access" | "/admin" | "/dining" | "/experience" | "/my-bookings" | "/oauth-success" | "/profile" | "/suites";
 		RouteParams(): {
 			
 		};
 		LayoutParams(): {
 			"/": Record<string, never>;
+			"/access": Record<string, never>;
+			"/admin": Record<string, never>;
 			"/dining": Record<string, never>;
 			"/experience": Record<string, never>;
+			"/my-bookings": Record<string, never>;
 			"/oauth-success": Record<string, never>;
 			"/profile": Record<string, never>;
 			"/suites": Record<string, never>
 		};
-		Pathname(): "/" | "/dining" | "/experience" | "/oauth-success" | "/profile" | "/suites";
+		Pathname(): "/" | "/access" | "/access/" | "/admin" | "/admin/" | "/dining" | "/dining/" | "/experience" | "/experience/" | "/my-bookings" | "/my-bookings/" | "/oauth-success" | "/oauth-success/" | "/profile" | "/profile/" | "/suites" | "/suites/";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
-		Asset(): "/css/index.css" | "/css/suites.css" | "/images/logo.png" | "/robots.txt" | string & {};
+		Asset(): "/images/logo.png" | "/robots.txt" | string & {};
 	}
 }
