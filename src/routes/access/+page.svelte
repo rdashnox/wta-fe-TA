@@ -1,3 +1,126 @@
+<script>
+  import { enhance } from '$app/forms';
+  import { showToast } from '$lib/stores/toast.js';
+  
+  export let form;
+  let formElement;
+  let errors = {};
+  let isSubmitting = false;
+  let emailRegex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+
+  // Contact Form Validation
+  function isContactFormFilled() {
+    const title = formElement?.elements.title.value?.trim();
+    const firstName = formElement?.elements.firstName.value?.trim();
+    const lastName = formElement?.elements.lastName.value?.trim();
+    const email = formElement?.elements['contact-form-email'].value?.trim();
+    const message = formElement?.elements.message.value?.trim();
+
+    return (title !== "" && firstName !== "" && lastName !== "" && email !== "" && message !== "");
+  }
+
+  function validateContactFormField(fieldName) {
+    const title = formElement?.elements.title.value?.trim();
+    const firstName = formElement?.elements.firstName.value?.trim();
+    const lastName = formElement?.elements.lastName.value?.trim();
+    const email = formElement?.elements['contact-form-email'].value?.trim();
+    const message = formElement?.elements.message.value?.trim();
+
+    switch (fieldName) {
+      case 'title':
+        if (!title) {
+          errors.title = 'Subject is required.';
+        } else {
+          delete errors.title;
+        }
+        break;
+
+      case 'firstName':
+        if (!firstName) {
+          errors.firstName = 'First name is required.';
+        } else {
+          delete errors.firstName;
+        }
+        break;
+
+      case 'lastName':
+        if (!lastName) {
+          errors.lastName = 'Last name is required.';
+        } else {
+          delete errors.lastName;
+        }
+        break;
+
+      case 'email':
+        if (!email || !emailRegex.test(email)) {
+          errors.email = 'Valid email is required.';
+        } else {
+          delete errors.email;
+        }
+        break;
+
+      case 'message':
+        if (!message || message.length < 5) {
+          errors.message = 'Message must be at least 5 characters long.';
+        } else {
+          delete errors.message;
+        }
+        break;
+    }
+
+    errors = errors;
+  }
+
+  function validateContactForm() {
+    errors = {};
+
+    const fields = ['title', 'firstName', 'lastName', 'email', 'message'];
+
+    fields.forEach(field => validateContactFormField(field));
+
+    return Object.keys(errors).length === 0;
+  }
+
+  // Submission Handlers
+  function handleContactFormSubmit(e) {
+    
+    if (!validateContactForm()) {
+      e.preventDefault();
+      showToast('Invalid Input.', 'error');
+    } else {
+      isSubmitting = true;
+    }
+  }
+
+  function handleContactFormSuccess() {
+    return async ({ result, update }) => {
+
+      if (!validateContactForm()) {
+      showToast('Invalid Input.', 'error');
+      return;
+      }
+
+      isSubmitting = false;
+
+      if (result.type === 'success') {
+        showToast('Message sent successfully!', 'success');
+        formElement?.reset();
+        errors = {};
+      } else if (result.type === 'failure') {
+        showToast(result.data?.message || 'Failed to send message', 'error');
+      } else if (result.type === 'error') {
+        showToast('An error occurred', 'error');
+      }
+
+      await update();
+    };
+  }
+
+</script>
+
+
+
+<!-- Page -->
 <svelte:head>
   <title>Access | Skye Suites</title>
 </svelte:head>
@@ -29,7 +152,14 @@
       <p class="section__intro"><em>Let's get in touch</em></p>
 
       <!-- Contact Form Block -->
-      <form id="contact-form" class="needs-validation" novalidate>
+      <form 
+        bind:this={formElement}
+        method="POST" 
+        use:enhance={handleContactFormSuccess}
+        on:submit={handleContactFormSubmit}
+        novalidate
+      >
+
         <p class="form-text text-muted">
           Fields marked with <span class="text-danger">*</span> are required.
         </p>
@@ -39,12 +169,14 @@
           <input
             type="text"
             class="form-control"
+            class:is-invalid={errors.title}
             id="title"
             name="title"
+            on:input={() => validateContactFormField('title')}
             required
             autocomplete="off"
           />
-          <div class="invalid-feedback">Please enter a subject.</div>
+          <div class="invalid-feedback">{errors.title}</div>
         </div>
         <div class="row g-3">
           <div class="col-md-6">
@@ -52,24 +184,28 @@
             <input
               type="text"
               class="form-control"
+              class:is-invalid={errors.firstName}
               id="first_name"
               name="firstName"
+              on:input={() => validateContactFormField('firstName')}
               required
               autocomplete="given-name"
             />
-            <div class="invalid-feedback">Please enter your first name.</div>
+            <div class="invalid-feedback">{errors.firstName}</div>
           </div>
           <div class="col-md-6">
             <label for="last_name" class="form-label">Last Name</label>
             <input
               type="text"
               class="form-control"
+              class:is-invalid={errors.lastName}
               id="last_name"
               name="lastName"
+              on:input={() => validateContactFormField('lastName')}
               required
               autocomplete="family-name"
             />
-            <div class="invalid-feedback">Please enter your last name.</div>
+            <div class="invalid-feedback">{errors.lastName}</div>
           </div>
         </div>
         <div class="mb-3 mt-3">
@@ -77,27 +213,34 @@
           <input
             type="email"
             class="form-control"
+            class:is-invalid={errors.email}
             id="contact-form-email"
             name="email"
+            on:input={() => validateContactFormField('email')}
             required
             autocomplete="email"
           />
-          <div class="invalid-feedback">Please enter a valid email.</div>
+          <div class="invalid-feedback">{errors.email}</div>
         </div>
         <div class="mb-3">
           <label for="message" class="form-label">Message</label>
           <textarea
             class="form-control"
+            class:is-invalid={errors.message}
             id="message"
             name="message"
             rows="4"
+            on:input={() => validateContactFormField('message')}
             required
           ></textarea>
-          <div class="invalid-feedback">Please enter your message.</div>
+          <div class="invalid-feedback">{errors.message}</div>
         </div>
         <div class="d-flex justify-content-end gap-2">
           <button type="reset" class="btn btn-secondary">Reset</button>
-          <button type="submit" class="btn btn-danger">SEND</button>
+          <button 
+            type="submit" 
+            class="btn btn-danger"
+            disabled={Object.keys(errors).length > 0 || !isContactFormFilled()}>SEND</button>
         </div>
       </form>
       <!-- End Contact Form Block -->
