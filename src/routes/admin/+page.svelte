@@ -2,6 +2,9 @@
   import { onMount } from "svelte";
   import { goto } from "$app/navigation";
 
+  // CORRECTED: Added "export" and used his exact string
+  export const API_BASE = import.meta.env.VITE_API_BASE || "http://localhost:3000/api";
+
   let users = [], bookings = [], messages = [], subscriptions = [];
   let loading = true;
   let currentTab = "users";
@@ -24,11 +27,12 @@
         "Content-Type": "application/json"
       };
 
+      // CORRECTED: Using Template Strings with API_BASE
       const [uRes, bRes, mRes, sRes] = await Promise.all([
-        fetch("http://localhost:3000/api/users", { headers }),
-        fetch("http://localhost:3000/api/users/all-bookings", { headers }),
-        fetch("http://localhost:3000/api/users/messages", { headers }),
-        fetch("http://localhost:3000/api/users/subscriptions", { headers })
+        fetch(`${API_BASE}/users`, { headers }),
+        fetch(`${API_BASE}/users/all-bookings`, { headers }),
+        fetch(`${API_BASE}/users/messages`, { headers }),
+        fetch(`${API_BASE}/users/subscriptions`, { headers })
       ]);
 
       if (uRes.ok) users = await uRes.json();
@@ -38,6 +42,7 @@
 
     } catch (e) {
       errorMessage = "Backend connection failed. Is the server running?";
+      console.error(e);
     } finally {
       loading = false;
     }
@@ -46,10 +51,12 @@
   onMount(async () => {
     const rawUser = localStorage.getItem('user');
     if (!rawUser) { goto("/"); return; }
+    
     const storageUser = JSON.parse(rawUser);
     adminEmail = storageUser.email;
 
-    if (storageUser.role === 'admin' || storageUser.email === "krizia.test4.admin@gmail.com") {
+    // CORRECTED: Strictly role-based. No email bypass (Arnel's biggest complaint).
+    if (storageUser.role === 'admin') {
       await fetchAdminData();
     } else {
       goto("/");
@@ -60,10 +67,10 @@
     if (!confirm(`Are you sure you want to delete this ${type}?`)) return;
     const token = localStorage.getItem('access');
     
-    // Logic for different delete endpoints
+    // CORRECTED: Template strings for delete endpoints using API_BASE
     const url = type === 'booking' 
-      ? `http://localhost:3000/api/users/bookings/${id}` 
-      : `http://localhost:3000/api/users/${id}`;
+      ? `${API_BASE}/users/bookings/${id}` 
+      : `${API_BASE}/users/${id}`;
 
     const res = await fetch(url, {
       method: 'DELETE',
@@ -71,7 +78,6 @@
     });
 
     if (res.ok) {
-      // Update local UI immediately after delete
       if (type === 'user') users = users.filter(u => (u._id || u.id) !== id);
       if (type === 'booking') bookings = bookings.filter(b => (b._id || b.id) !== id);
       alert(`${type} deleted successfully`);
@@ -103,6 +109,8 @@
           <div class="spinner-border text-dark"></div>
           <p class="mt-2 text-muted">Loading secure data...</p>
         </div>
+      {:else if errorMessage}
+        <div class="alert alert-danger">{errorMessage}</div>
       {:else}
         <div class="table-responsive">
           {#if currentTab === 'users'}

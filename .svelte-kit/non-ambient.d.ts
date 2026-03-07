@@ -27,7 +27,7 @@ export {};
 
 declare module "$app/types" {
 	export interface AppTypes {
-		RouteId(): "/" | "/access" | "/admin" | "/api" | "/api/contact" | "/dining" | "/experience" | "/my-bookings" | "/oauth-success" | "/profile" | "/suites";
+		RouteId(): "/" | "/access" | "/admin" | "/dining" | "/experience" | "/my-bookings" | "/oauth-success" | "/profile" | "/suites";
 		RouteParams(): {
 			
 		};
@@ -35,8 +35,6 @@ declare module "$app/types" {
 			"/": Record<string, never>;
 			"/access": Record<string, never>;
 			"/admin": Record<string, never>;
-			"/api": Record<string, never>;
-			"/api/contact": Record<string, never>;
 			"/dining": Record<string, never>;
 			"/experience": Record<string, never>;
 			"/my-bookings": Record<string, never>;
