@@ -92,7 +92,7 @@ import EditBookingModal from "$lib/components/EditBookingModal.svelte";
   {:else if bookings.length === 0}
     <div class="alert alert-info" role="alert">
       You don't have any bookings yet.
-      <a href="/" class="alert-link">Explore rooms</a>.
+      <a href="/suites" class="alert-link">Explore rooms</a>.
     </div>
   {:else}
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
