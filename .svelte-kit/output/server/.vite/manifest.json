@@ -7,7 +7,6 @@
     "imports": [
       "_root.js",
       "_environment.js",
-      "_server.js",
       "_internal.js"
     ]
   },
@@ -64,8 +63,7 @@
     "name": "internal",
     "imports": [
       "_root.js",
-      "_environment.js",
-      "_server.js"
+      "_environment.js"
     ],
     "dynamicImports": [
       "src/hooks.server.js"
@@ -77,10 +75,6 @@
     "imports": [
       "_index2.js"
     ]
-  },
-  "_server.js": {
-    "file": "chunks/server.js",
-    "name": "server"
   },
   "_shared.js": {
     "file": "chunks/shared.js",
@@ -114,7 +108,6 @@
     "imports": [
       "_shared.js",
       "_false.js",
-      "_server.js",
       "_environment.js"
     ]
   },
@@ -136,7 +129,7 @@
     "isEntry": true,
     "imports": [
       "_false.js",
-      "_server.js",
+      "_environment.js",
       "_shared.js",
       "_exports.js",
       "_utils.js",
@@ -151,6 +144,10 @@
     "isEntry": true,
     "isDynamicEntry": true
   },
+  "src/lib/images/logo.png": {
+    "file": "_app/immutable/assets/logo.DrE8QnVE.png",
+    "src": "src/lib/images/logo.png"
+  },
   "src/routes/+layout.svelte": {
     "file": "entries/pages/_layout.svelte.js",
     "name": "entries/pages/_layout.svelte",
@@ -164,13 +161,15 @@
       "_state.svelte.js",
       "_client.js",
       "_auth.js",
-      "_server.js",
       "_validationSchemas.js",
       "_LoginModal.svelte_svelte_type_style_lang.js",
       "_index.js"
     ],
     "css": [
       "_app/immutable/assets/_layout.Czz-o6y2.css"
+    ],
+    "assets": [
+      "_app/immutable/assets/logo.DrE8QnVE.png"
     ]
   },
   "src/routes/+page.svelte": {

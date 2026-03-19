@@ -8,7 +8,6 @@ import "../../chunks/root.js";
 import "../../chunks/state.svelte.js";
 import { g as goto } from "../../chunks/client.js";
 import { a as authUpdated, u as user, i as isAuthenticated, b as accessToken } from "../../chunks/auth.js";
-import { a as assets } from "../../chunks/server.js";
 import "../../chunks/validationSchemas.js";
 import "../../chunks/LoginModal.svelte_svelte_type_style_lang.js";
 import { w as writable } from "../../chunks/index.js";
@@ -40,14 +39,13 @@ const navigating = {
   }
 };
 const toast = writable(null);
+const logo = "/wta-fe/_app/immutable/assets/logo.DrE8QnVE.png";
 function TopNav($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     var $$store_subs;
-    let logoPath;
     store_get($$store_subs ??= {}, "$authUpdated", authUpdated);
     store_get($$store_subs ??= {}, "$user", user)?.role === "admin";
-    logoPath = assets("images/logo.png");
-    $$renderer2.push(`<nav class="navbar navbar-expand-lg custom-glass-navbar"><div class="container navbar__container"><a href="/" class="navbar__logo-link" aria-label="Skye Suites Home"><img${attr("src", logoPath)} alt="Skye Suites Logo" class="navbar__logo" loading="lazy"/></a> <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button> <div class="collapse navbar-collapse d-none d-lg-flex"><ul class="navbar-nav ms-auto mb-2 mb-lg-0"><li class="nav-item"><a href="/" class="nav-link">Home</a></li> <li class="nav-item"><a href="/suites" class="nav-link">Suites</a></li> <li class="nav-item"><a href="/dining" class="nav-link">Dining</a></li> <li class="nav-item"><a href="/experience" class="nav-link">Experience</a></li> <li class="nav-item"><a href="/access" class="nav-link">Access</a></li></ul> <div class="ms-lg-3 d-flex align-items-center gap-2">`);
+    $$renderer2.push(`<nav class="navbar navbar-expand-lg custom-glass-navbar"><div class="container navbar__container"><a href="/" class="navbar__logo-link" aria-label="Skye Suites Home"><img${attr("src", logo)} alt="Skye Suites Logo" class="navbar__logo" loading="lazy"/></a> <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button> <div class="collapse navbar-collapse d-none d-lg-flex"><ul class="navbar-nav ms-auto mb-2 mb-lg-0"><li class="nav-item"><a href="/" class="nav-link">Home</a></li> <li class="nav-item"><a href="/suites" class="nav-link">Suites</a></li> <li class="nav-item"><a href="/dining" class="nav-link">Dining</a></li> <li class="nav-item"><a href="/experience" class="nav-link">Experience</a></li> <li class="nav-item"><a href="/access" class="nav-link">Access</a></li></ul> <div class="ms-lg-3 d-flex align-items-center gap-2">`);
     if (store_get($$store_subs ??= {}, "$isAuthenticated", isAuthenticated)) {
       $$renderer2.push("<!--[-->");
       $$renderer2.push(`<div class="position-relative account-dropdown"><button class="btn btn-outline-light btn-sm dropdown-toggle" type="button">${escape_html(store_get($$store_subs ??= {}, "$user", user)?.email)}</button> `);
