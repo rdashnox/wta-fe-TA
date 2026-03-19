@@ -1,4 +1,4 @@
-import { i as head, j as ensure_array_like, a as attr_class, b as attr, c as stringify } from "../../../chunks/index2.js";
+import { i as head, j as ensure_array_like, b as attr_class, a as attr, c as stringify } from "../../../chunks/index2.js";
 function _page($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     head("bz8p3m", $$renderer2, ($$renderer3) => {

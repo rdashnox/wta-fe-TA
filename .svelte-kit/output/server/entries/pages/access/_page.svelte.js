@@ -1,4 +1,4 @@
-import { i as head, a as attr_class, e as escape_html, b as attr } from "../../../chunks/index2.js";
+import { i as head, b as attr_class, e as escape_html, a as attr } from "../../../chunks/index2.js";
 function _page($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     let formElement;

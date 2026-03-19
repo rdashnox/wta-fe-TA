@@ -7,6 +7,7 @@
     "imports": [
       "_root.js",
       "_environment.js",
+      "_server.js",
       "_internal.js"
     ]
   },
@@ -63,7 +64,8 @@
     "name": "internal",
     "imports": [
       "_root.js",
-      "_environment.js"
+      "_environment.js",
+      "_server.js"
     ],
     "dynamicImports": [
       "src/hooks.server.js"
@@ -75,6 +77,10 @@
     "imports": [
       "_index2.js"
     ]
+  },
+  "_server.js": {
+    "file": "chunks/server.js",
+    "name": "server"
   },
   "_shared.js": {
     "file": "chunks/shared.js",
@@ -108,6 +114,7 @@
     "imports": [
       "_shared.js",
       "_false.js",
+      "_server.js",
       "_environment.js"
     ]
   },
@@ -129,7 +136,7 @@
     "isEntry": true,
     "imports": [
       "_false.js",
-      "_environment.js",
+      "_server.js",
       "_shared.js",
       "_exports.js",
       "_utils.js",
@@ -157,6 +164,7 @@
       "_state.svelte.js",
       "_client.js",
       "_auth.js",
+      "_server.js",
       "_validationSchemas.js",
       "_LoginModal.svelte_svelte_type_style_lang.js",
       "_index.js"
