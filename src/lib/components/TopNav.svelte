@@ -9,8 +9,6 @@
     accessToken,
   } from "$lib/stores/auth";
 
-  import logo from '$lib/images/logo.png';
-
   let accountOpen = false;
 
   $: $authUpdated;
@@ -81,7 +79,7 @@
     <!-- Logo -->
     <a href="/" class="navbar__logo-link" aria-label="Skye Suites Home">
       <img
-        src={logo}
+        src="/images/logo.png"
         alt="Skye Suites Logo"
         class="navbar__logo"
         loading="lazy"
