@@ -1,16 +1,3 @@
-<script>
-  import { siteConfig } from "$lib/config";
-</script>
-
-<svelte:head>
-  <title>Terms of Service | {siteConfig.siteName}</title>
-  <meta
-    name="description"
-    content="Terms of Service for Skye Suites Hotel Demo. Academic project only, no real bookings."
-  />
-  <link rel="canonical" href="{siteConfig.siteUrl}/terms" />
-</svelte:head>
-
 <main class="container py-5">
   <h1>Terms of Service</h1>
   <p>

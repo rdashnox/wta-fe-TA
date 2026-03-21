@@ -55,7 +55,7 @@
   $: dynamicTitle =
     {
       "/": `Home | ${siteConfig.siteName}`,
-      "/about": `Aout | ${siteConfig.siteName}`,
+      "/about": `About | ${siteConfig.siteName}`,
       "/suites": `Suites | ${siteConfig.siteName}`,
       "/experience": `Experience | ${siteConfig.siteName}`,
       "/dining": `Dining | ${siteConfig.siteName}`,
@@ -135,17 +135,30 @@
   />
   <meta property="og:type" content="website" />
   <meta property="og:url" content={siteConfig?.siteUrl} />
-
+  <meta property="og:image" content={siteConfig?.siteUrl + "/og-image.png"} />
   <meta name="classification" content="Academic Project" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Skye Suites | Academic Demo" />
+  <meta
+    name="twitter:description"
+    content="Academic Proof-of-Concept hotel system."
+  />
+  <meta name="twitter:image" content={siteConfig?.siteUrl + "/og-image.png"} />
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-precomposed.png" />
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="/apple-touch-icon-precomposed.png"
+  />
   <meta name="apple-mobile-web-app-title" content="Sky  Suites" />
   <link rel="manifest" href="/site.webmanifest" />
   <link rel="shortcut icon" href="/favicon.ico" />
+  <meta name="theme-color" content="#123456" />
 
   <!-- Canonical -->
   <link rel="canonical" href={siteConfig?.siteUrl} />
