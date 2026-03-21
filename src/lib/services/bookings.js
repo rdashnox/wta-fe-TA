@@ -1,4 +1,3 @@
-// src/lib/services/bookings.js
 import { get } from "svelte/store";
 import { accessToken } from "$lib/stores/auth.js";
 import { API_BASE } from "$lib/api/config.js";
@@ -53,7 +52,7 @@ export async function getUserBookings() {
   }
 
   try {
-    const res = await fetch(API_URL, { // Backend route is /api/booking
+    const res = await fetch(API_URL + '/my', { // Backend route is /api/booking
       method: "GET",
       headers: {
         "Content-Type": "application/json",
