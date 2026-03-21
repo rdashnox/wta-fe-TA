@@ -1,1 +1,0 @@
-export const env={"PUBLIC_SITE_BASE":"http://localhost:5173/","PUBLIC_API_BASE":"http://localhost:3000/api"}

@@ -30,3 +30,8 @@ dist/
 
 .gitingestignore
 
+.svelte-kit/
+.firebase/
+
+package-lock.json
+
