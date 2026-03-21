@@ -15,11 +15,12 @@
   import Toast from "$lib/components/Toast.svelte";
   import { siteConfig } from "$lib/config";
 
+  export const prerender = true;
+
   $: path = $page.url.pathname;
 
   // Routes that require authentication
   const protectedRoutes = [
-    "/dashboard",
     "/profile",
     "/my-bookings",
     "/oauth-success",
@@ -107,9 +108,9 @@
     content="academic project, hotel booking system, SvelteKit demo, JAMstack, hospitality system, educational web application"
   />
 
-  <meta name="author" content={siteConfig.siteName} />
+  <meta name="author" content={siteConfig?.siteName} />
 
-  <meta name="application-name" content={siteConfig.siteName} />
+  <meta name="application-name" content={siteConfig?.siteName} />
   <meta
     name="category"
     content="Academic Project, Frontend Software Development Simulation"
@@ -133,7 +134,7 @@
     content="A simulated hotel booking system developed for academic, proof-of-concept and demonstration purposes."
   />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://your-domain.web.app" />
+  <meta property="og:url" content={siteConfig?.siteUrl} />
 
   <meta name="classification" content="Academic Project" />
 
@@ -141,13 +142,13 @@
   <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-precomposed.png" />
   <meta name="apple-mobile-web-app-title" content="Sky  Suites" />
   <link rel="manifest" href="/site.webmanifest" />
   <link rel="shortcut icon" href="/favicon.ico" />
 
   <!-- Canonical -->
-  <link rel="canonical" href="https://your-domain.web.app" />
+  <link rel="canonical" href={siteConfig?.siteUrl} />
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -159,7 +160,7 @@
       "provider": {
         "@type": "Organization",
         "name": "Academic Project",
-        "url": "https://your-domain.web.app"
+        "url": "https://wta-fe.web.app"
       },
       "educationalProgramMode": "online",
       "applicationCategory": "EducationalApplication",

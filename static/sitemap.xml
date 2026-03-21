@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://wta-fe.web.app/</loc>
+    <lastmod>2026-03-21T14:35:39.199Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://wta-fe.web.app/about</loc>
+    <lastmod>2026-03-21T14:35:39.200Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://wta-fe.web.app/access</loc>
+    <lastmod>2026-03-21T14:35:39.200Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://wta-fe.web.app/admin</loc>
+    <lastmod>2026-03-21T14:35:39.200Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://wta-fe.web.app/dining</loc>
+    <lastmod>2026-03-21T14:35:39.200Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://wta-fe.web.app/experience</loc>
+    <lastmod>2026-03-21T14:35:39.200Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://wta-fe.web.app/my-bookings</loc>
+    <lastmod>2026-03-21T14:35:39.200Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://wta-fe.web.app/oauth-success</loc>
+    <lastmod>2026-03-21T14:35:39.200Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://wta-fe.web.app/privacy-policy</loc>
+    <lastmod>2026-03-21T14:35:39.200Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://wta-fe.web.app/profile</loc>
+    <lastmod>2026-03-21T14:35:39.200Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://wta-fe.web.app/suites</loc>
+    <lastmod>2026-03-21T14:35:39.200Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://wta-fe.web.app/terms</loc>
+    <lastmod>2026-03-21T14:35:39.200Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>

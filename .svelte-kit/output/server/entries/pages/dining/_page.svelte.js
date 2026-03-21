@@ -1,11 +1,6 @@
-import { i as head, j as ensure_array_like, b as attr_class, a as attr, c as stringify } from "../../../chunks/index2.js";
+import { j as ensure_array_like, a as attr_class, b as attr, c as stringify } from "../../../chunks/index2.js";
 function _page($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
-    head("bz8p3m", $$renderer2, ($$renderer3) => {
-      $$renderer3.title(($$renderer4) => {
-        $$renderer4.push(`<title>Dining | Skye Suites</title>`);
-      });
-    });
     $$renderer2.push(`<main class="dining-main container-fluid p-0 svelte-bz8p3m"><section class="content-title svelte-bz8p3m" aria-label="Breakfast dining section"><div class="container py-5"><div class="row align-items-center"><div class="col-md-6 mb-4 mb-md-0 text-center"><h3 class="fw-bold section-title svelte-bz8p3m">Breakfast</h3> <h5 class="section-description svelte-bz8p3m">Rise and Shine! <br/> Good food to start the day.</h5> <p class="section-paragraph svelte-bz8p3m">Daily from 07:00 to 10:00</p></div> <div class="col-md-6"><div id="breakfastCarousel" class="carousel slide carousel-fade svelte-bz8p3m"><div class="carousel-inner rounded-4 shadow svelte-bz8p3m"><!--[-->`);
     const each_array = ensure_array_like([
       "3298637",

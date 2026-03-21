@@ -49,6 +49,6 @@ declare module "$app/types" {
 		};
 		Pathname(): "/" | "/about" | "/access" | "/admin" | "/dining" | "/experience" | "/my-bookings" | "/oauth-success" | "/privacy-policy" | "/profile" | "/suites" | "/terms";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
-		Asset(): "/.DS_Store" | "/apple-touch-icon.png" | "/favicon-96x96.png" | "/favicon.ico" | "/favicon.svg" | "/images/.DS_Store" | "/images/logo.png" | "/robots.txt" | "/site.webmanifest" | "/web-app-manifest-192x192.png" | "/web-app-manifest-512x512.png" | string & {};
+		Asset(): "/.DS_Store" | "/apple-touch-icon-precomposed.png" | "/favicon-96x96.png" | "/favicon.ico" | "/favicon.svg" | "/images/.DS_Store" | "/images/logo.png" | "/robots.txt" | "/site.webmanifest" | "/sitemap.xml" | "/web-app-manifest-192x192.png" | "/web-app-manifest-512x512.png" | string & {};
 	}
 }

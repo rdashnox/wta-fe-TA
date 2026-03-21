@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "wta-fe",
+    "prod": "wta-fe"
+  },
+  "targets": {},
+  "etags": {}
+}

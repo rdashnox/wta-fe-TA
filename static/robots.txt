@@ -1,7 +1,7 @@
 # Allow public pages
 User-agent: *
 
-Sitemap: https://your-domain.web.app/sitemap.xml
+Sitemap: https://wta-fe.web.app/sitemap.xml
 
 Allow: /
 Allow: /suites

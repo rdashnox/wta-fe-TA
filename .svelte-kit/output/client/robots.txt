@@ -1,3 +1,21 @@
-# allow crawling everything by default
+# Allow public pages
 User-agent: *
-Disallow:
+
+Sitemap: https://wta-fe.web.app/sitemap.xml
+
+Allow: /
+Allow: /suites
+Allow: /dining
+Allow: /experience
+Allow: /about
+Allow: /privacy-policy
+Allow: /terms
+Allow: /access
+
+# Block protected/auth pages
+Disallow: /admin
+Disallow: /profile  
+Disallow: /my-bookings
+Disallow: /admin
+Disallow: /oauth-success
+

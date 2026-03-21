@@ -17,8 +17,8 @@
     note: booking.note || "",
   };
 
-  const errors = writable({}); // Renamed from validationErrors for brevity
-  let isValidForm; // Declare isValidForm here without initial value
+  const errors = writable({}); 
+  let isValidForm; 
 
   // Function to perform validation and return errors
   function doValidateForm(currentForm) {
@@ -56,7 +56,7 @@
       return;
     }
 
-    const bookingId = booking._id || booking.id; // Use _id for MongoDB or id for frontend
+    const bookingId = booking._id || booking.id;
 
     try {
       const updatedData = {
@@ -72,7 +72,7 @@
       if (res) {
         showToast("Booking updated successfully!", "success");
         // Dispatch event to parent to update the booking list
-        dispatch("update", { ...booking, ...updatedData, checkOutDate: res.checkOutDate }); // Update with server response if any
+        dispatch("update", { ...booking, ...updatedData, checkOutDate: res.checkOutDate });
         dispatch("close");
       } else {
         showToast(res?.message || "Failed to update booking. Please try again.", "error");

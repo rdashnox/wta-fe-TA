@@ -1,4 +1,4 @@
-let base = "/wta-fe";
+let base = "";
 let assets = base;
 const app_dir = "_app";
 const relative = true;

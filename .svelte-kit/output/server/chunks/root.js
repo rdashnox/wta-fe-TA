@@ -1,4 +1,4 @@
-import { H as HYDRATION_ERROR, C as COMMENT_NODE, l as HYDRATION_END, m as HYDRATION_START, o as HYDRATION_START_ELSE, p as get_next_sibling, q as effect_tracking, r as get, t as render_effect, v as source, w as untrack, x as increment, y as queue_micro_task, z as active_effect, B as BOUNDARY_EFFECT, A as block, D as branch, E as create_text, F as Batch, G as pause_effect, I as move_effect, J as set_signal_status, K as DIRTY, L as schedule_effect, M as MAYBE_DIRTY, N as defer_effect, O as set_active_effect, P as set_active_reaction, Q as set_component_context, R as handle_error, S as active_reaction, T as component_context, U as internal_set, V as destroy_effect, W as invoke_error_boundary, X as svelte_boundary_reset_onerror, Y as HYDRATION_START_FAILED, Z as EFFECT_TRANSPARENT, _ as EFFECT_PRESERVED, $ as define_property, a0 as init_operations, a1 as get_first_child, a2 as hydration_failed, a3 as clear_text_content, a4 as component_root, a5 as array_from, a6 as is_passive_event, a7 as push, a8 as pop, a9 as set, aa as LEGACY_PROPS, ab as flushSync, ac as mutable_source, ad as render, ae as setContext, af as derived } from "./index2.js";
+import { H as HYDRATION_ERROR, C as COMMENT_NODE, l as HYDRATION_END, m as HYDRATION_START, o as HYDRATION_START_ELSE, p as get_next_sibling, q as effect_tracking, r as get, t as render_effect, v as source, w as untrack, x as increment, y as queue_micro_task, z as active_effect, B as BOUNDARY_EFFECT, A as block, D as branch, E as create_text, F as pause_effect, G as current_batch, I as move_effect, J as defer_effect, K as set_active_effect, L as set_active_reaction, M as set_component_context, N as Batch, O as handle_error, P as active_reaction, Q as component_context, R as internal_set, S as destroy_effect, T as invoke_error_boundary, U as svelte_boundary_reset_onerror, V as HYDRATION_START_FAILED, W as EFFECT_TRANSPARENT, X as EFFECT_PRESERVED, Y as define_property, Z as init_operations, _ as get_first_child, $ as hydration_failed, a0 as clear_text_content, a1 as component_root, a2 as array_from, a3 as is_passive_event, a4 as push, a5 as pop, a6 as set, a7 as LEGACY_PROPS, a8 as flushSync, a9 as mutable_source, aa as render, ab as setContext, ac as derived } from "./index2.js";
 function hydration_mismatch(location) {
   {
     console.warn(`https://svelte.dev/e/hydration_mismatch`);
@@ -217,7 +217,6 @@ class Boundary {
       var anchor = create_text();
       fragment.append(anchor);
       this.#main_effect = this.#run(() => {
-        Batch.ensure();
         return branch(() => this.#children(anchor));
       });
       if (this.#pending_count === 0) {
@@ -230,7 +229,10 @@ class Boundary {
             this.#pending_effect = null;
           }
         );
-        this.#resolve();
+        this.#resolve(
+          /** @type {Batch} */
+          current_batch
+        );
       }
     });
   }
@@ -251,24 +253,21 @@ class Boundary {
         );
         this.#pending_effect = branch(() => pending(this.#anchor));
       } else {
-        this.#resolve();
+        this.#resolve(
+          /** @type {Batch} */
+          current_batch
+        );
       }
     } catch (error) {
       this.error(error);
     }
   }
-  #resolve() {
+  /**
+   * @param {Batch} batch
+   */
+  #resolve(batch) {
     this.is_pending = false;
-    for (const e of this.#dirty_effects) {
-      set_signal_status(e, DIRTY);
-      schedule_effect(e);
-    }
-    for (const e of this.#maybe_dirty_effects) {
-      set_signal_status(e, MAYBE_DIRTY);
-      schedule_effect(e);
-    }
-    this.#dirty_effects.clear();
-    this.#maybe_dirty_effects.clear();
+    batch.transfer_effects(this.#dirty_effects, this.#maybe_dirty_effects);
   }
   /**
    * Defer an effect inside a pending boundary until the boundary resolves
@@ -299,6 +298,7 @@ class Boundary {
     set_active_reaction(this.#effect);
     set_component_context(this.#effect.ctx);
     try {
+      Batch.ensure();
       return fn();
     } catch (e) {
       handle_error(e);
@@ -313,17 +313,18 @@ class Boundary {
    * Updates the pending count associated with the currently visible pending snippet,
    * if any, such that we can replace the snippet with content once work is done
    * @param {1 | -1} d
+   * @param {Batch} batch
    */
-  #update_pending_count(d) {
+  #update_pending_count(d, batch) {
     if (!this.has_pending_snippet()) {
       if (this.parent) {
-        this.parent.#update_pending_count(d);
+        this.parent.#update_pending_count(d, batch);
       }
       return;
     }
     this.#pending_count += d;
     if (this.#pending_count === 0) {
-      this.#resolve();
+      this.#resolve(batch);
       if (this.#pending_effect) {
         pause_effect(this.#pending_effect, () => {
           this.#pending_effect = null;
@@ -340,9 +341,10 @@ class Boundary {
    * and controls when the current `pending` snippet (if any) is removed.
    * Do not call from inside the class
    * @param {1 | -1} d
+   * @param {Batch} batch
    */
-  update_pending_count(d) {
-    this.#update_pending_count(d);
+  update_pending_count(d, batch) {
+    this.#update_pending_count(d, batch);
     this.#local_pending_count += d;
     if (!this.#effect_pending || this.#pending_count_update_queued) return;
     this.#pending_count_update_queued = true;
@@ -404,7 +406,6 @@ class Boundary {
         });
       }
       this.#run(() => {
-        Batch.ensure();
         this.#render();
       });
     };
@@ -418,7 +419,6 @@ class Boundary {
       }
       if (failed) {
         this.#failed_effect = this.#run(() => {
-          Batch.ensure();
           try {
             return branch(() => {
               var effect = (
@@ -884,7 +884,7 @@ function Root($$renderer, $$props) {
     }
     const Pyramid_1 = derived(() => constructors[1]);
     if (constructors[1]) {
-      $$renderer2.push("<!--[-->");
+      $$renderer2.push("<!--[0-->");
       const Pyramid_0 = constructors[0];
       if (Pyramid_0) {
         $$renderer2.push("<!--[-->");
@@ -910,7 +910,7 @@ function Root($$renderer, $$props) {
         $$renderer2.push("<!--]-->");
       }
     } else {
-      $$renderer2.push("<!--[!-->");
+      $$renderer2.push("<!--[-1-->");
       const Pyramid_0 = constructors[0];
       if (Pyramid_0) {
         $$renderer2.push("<!--[-->");
@@ -923,7 +923,7 @@ function Root($$renderer, $$props) {
     }
     $$renderer2.push(`<!--]--> `);
     {
-      $$renderer2.push("<!--[!-->");
+      $$renderer2.push("<!--[-1-->");
     }
     $$renderer2.push(`<!--]-->`);
   });

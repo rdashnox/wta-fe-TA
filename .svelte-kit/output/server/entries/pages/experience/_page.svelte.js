@@ -1,10 +1,5 @@
-import { i as head } from "../../../chunks/index2.js";
+import "clsx";
 function _page($$renderer) {
-  head("p8n5lx", $$renderer, ($$renderer2) => {
-    $$renderer2.title(($$renderer3) => {
-      $$renderer3.push(`<title>Experience | Skye Suites</title>`);
-    });
-  });
   $$renderer.push(`<main class="experience-main svelte-p8n5lx"><section class="wellness svelte-p8n5lx" aria-labelledby="wellness-heading"><div class="wellness__hero svelte-p8n5lx"><img src="https://images.pexels.com/photos/1265990/pexels-photo-1265990.jpeg" alt="Luxury pool at Skye Suites" class="wellness__hero-image svelte-p8n5lx" loading="lazy"/></div> <div class="wellness__content svelte-p8n5lx"><div class="container-xl"><header class="wellness__header svelte-p8n5lx"><h2 id="wellness-heading" class="wellness__title svelte-p8n5lx">Wellness</h2> <p class="wellness__subtitle svelte-p8n5lx"><em>A place where you can immerse yourself in pure relaxation and
               beauty</em></p></header> <div class="row g-4"><article class="col-12 col-md-6 col-lg-4"><div class="experience-card h-100 svelte-p8n5lx"><div class="experience-card__image-wrapper svelte-p8n5lx"><img src="https://images.pexels.com/photos/7598360/pexels-photo-7598360.jpeg" alt="Massage therapy at Skye Suites spa" class="experience-card__image svelte-p8n5lx" loading="lazy"/> <div class="experience-card__overlay svelte-p8n5lx"><h3 class="experience-card__title svelte-p8n5lx">MASSAGE THERAPY</h3></div></div> <div class="experience-card__content svelte-p8n5lx"><p class="experience-card__description svelte-p8n5lx">Indulge in our therapeutic massage treatments designed to
                   rejuvenate your body and mind. Our skilled therapists use

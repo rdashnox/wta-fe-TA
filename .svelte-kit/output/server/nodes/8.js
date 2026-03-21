@@ -2,7 +2,11 @@
 
 export const index = 8;
 let component_cache;
-export const component = async () => component_cache ??= (await import('../entries/pages/oauth-success/_page.svelte.js')).default;
-export const imports = ["_app/immutable/nodes/8.ClECWvWy.js","_app/immutable/chunks/ccil3FFO.js","_app/immutable/chunks/D_pUkfcj.js","_app/immutable/chunks/CzTAYrsp.js","_app/immutable/chunks/Bt7u3dhx.js","_app/immutable/chunks/D259pRMx.js","_app/immutable/chunks/Yc7uqtvg.js","_app/immutable/chunks/CXagKooe.js","_app/immutable/chunks/CzXad7lk.js","_app/immutable/chunks/BqCLhDMz.js"];
+export const component = async () => component_cache ??= (await import('../entries/pages/my-bookings/_page.svelte.js')).default;
+export const universal = {
+  "ssr": false
+};
+export const universal_id = "src/routes/my-bookings/+page.js";
+export const imports = ["_app/immutable/nodes/8.Bg27vMz-.js","_app/immutable/chunks/DcbeN8eZ.js","_app/immutable/chunks/_-MoZFLV.js","_app/immutable/chunks/CbYAu99_.js","_app/immutable/chunks/DVbH_6rU.js","_app/immutable/chunks/hbMTq8RH.js","_app/immutable/chunks/B2kn-HsB.js","_app/immutable/chunks/DDE_a7pd.js","_app/immutable/chunks/BeCJjKjC.js","_app/immutable/chunks/Ce-Kghpb.js","_app/immutable/chunks/BtsSZRfA.js","_app/immutable/chunks/BUdpjeE1.js","_app/immutable/chunks/Bt_a3e2Z.js","_app/immutable/chunks/Dzhn998B.js","_app/immutable/chunks/sumQx2B4.js","_app/immutable/chunks/CSsBdnfW.js","_app/immutable/chunks/CWT3di6J.js","_app/immutable/chunks/B5qZNZo2.js","_app/immutable/chunks/Dk3nH8Y5.js","_app/immutable/chunks/RkAXrZgp.js"];
 export const stylesheets = [];
 export const fonts = [];

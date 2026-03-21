@@ -1,4 +1,3 @@
-// src/lib/utils/api.js
 import { get } from "svelte/store";
 import { accessToken } from "$lib/stores/auth";
 

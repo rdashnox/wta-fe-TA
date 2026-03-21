@@ -39,13 +39,14 @@
  */
 declare module '$env/static/private' {
 	export const VITE_SITE_BASE: string;
+	export const VITE_SITE_URL: string;
 	export const VITE_API_BASE: string;
 	export const TERM_PROGRAM: string;
 	export const NODE: string;
 	export const INIT_CWD: string;
 	export const PYENV_ROOT: string;
-	export const TERM: string;
 	export const SHELL: string;
+	export const TERM: string;
 	export const TMPDIR: string;
 	export const npm_config_global_prefix: string;
 	export const VSCODE_PYTHON_AUTOACTIVATE_GUARD: string;
@@ -68,7 +69,6 @@ declare module '$env/static/private' {
 	export const PYDEVD_DISABLE_FILE_VALIDATION: string;
 	export const PATH: string;
 	export const npm_package_json: string;
-	export const _: string;
 	export const LaunchInstanceID: string;
 	export const npm_config_userconfig: string;
 	export const npm_config_init_module: string;
@@ -86,14 +86,13 @@ declare module '$env/static/private' {
 	export const npm_config_npm_version: string;
 	export const VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
 	export const XPC_FLAGS: string;
-	export const MACH_PORT_RENDEZVOUS_PEER_VALDATION: string;
 	export const npm_config_node_gyp: string;
 	export const npm_package_version: string;
 	export const XPC_SERVICE_NAME: string;
 	export const VSCODE_INJECTION: string;
 	export const VSCODE_DEBUGPY_ADAPTER_ENDPOINTS: string;
-	export const SHLVL: string;
 	export const HOME: string;
+	export const SHLVL: string;
 	export const VSCODE_GIT_ASKPASS_MAIN: string;
 	export const PYTHON_BASIC_REPL: string;
 	export const npm_config_cache: string;
@@ -109,6 +108,7 @@ declare module '$env/static/private' {
 	export const npm_node_execpath: string;
 	export const npm_config_prefix: string;
 	export const COLORTERM: string;
+	export const _: string;
 	export const NODE_ENV: string;
 }
 
@@ -198,13 +198,14 @@ declare module '$env/static/public' {
 declare module '$env/dynamic/private' {
 	export const env: {
 		VITE_SITE_BASE: string;
+		VITE_SITE_URL: string;
 		VITE_API_BASE: string;
 		TERM_PROGRAM: string;
 		NODE: string;
 		INIT_CWD: string;
 		PYENV_ROOT: string;
-		TERM: string;
 		SHELL: string;
+		TERM: string;
 		TMPDIR: string;
 		npm_config_global_prefix: string;
 		VSCODE_PYTHON_AUTOACTIVATE_GUARD: string;
@@ -227,7 +228,6 @@ declare module '$env/dynamic/private' {
 		PYDEVD_DISABLE_FILE_VALIDATION: string;
 		PATH: string;
 		npm_package_json: string;
-		_: string;
 		LaunchInstanceID: string;
 		npm_config_userconfig: string;
 		npm_config_init_module: string;
@@ -245,14 +245,13 @@ declare module '$env/dynamic/private' {
 		npm_config_npm_version: string;
 		VSCODE_GIT_ASKPASS_EXTRA_ARGS: string;
 		XPC_FLAGS: string;
-		MACH_PORT_RENDEZVOUS_PEER_VALDATION: string;
 		npm_config_node_gyp: string;
 		npm_package_version: string;
 		XPC_SERVICE_NAME: string;
 		VSCODE_INJECTION: string;
 		VSCODE_DEBUGPY_ADAPTER_ENDPOINTS: string;
-		SHLVL: string;
 		HOME: string;
+		SHLVL: string;
 		VSCODE_GIT_ASKPASS_MAIN: string;
 		PYTHON_BASIC_REPL: string;
 		npm_config_cache: string;
@@ -268,6 +267,7 @@ declare module '$env/dynamic/private' {
 		npm_node_execpath: string;
 		npm_config_prefix: string;
 		COLORTERM: string;
+		_: string;
 		NODE_ENV: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;

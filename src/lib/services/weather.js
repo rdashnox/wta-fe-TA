@@ -19,7 +19,7 @@ export async function getWeatherRange({ location }) {
       condition: midday?.weatherDesc?.[0]?.value ?? "N/A",
       icon: midday?.weatherIconUrl?.[0]?.value ?? null,
 
-      // 🌧 Environmental factors
+      // Environmental factors
       chanceOfRain: midday?.chanceofrain ?? "0",
       humidity: midday?.humidity ?? "N/A",
       windSpeed: midday?.windspeedKmph ?? "N/A",
