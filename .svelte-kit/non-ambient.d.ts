@@ -29,23 +29,26 @@ declare module "$app/types" {
 	type MatcherParam<M> = M extends (param : string) => param is (infer U extends string) ? U : string;
 
 	export interface AppTypes {
-		RouteId(): "/" | "/access" | "/admin" | "/dining" | "/experience" | "/my-bookings" | "/oauth-success" | "/profile" | "/suites";
+		RouteId(): "/" | "/about" | "/access" | "/admin" | "/dining" | "/experience" | "/my-bookings" | "/oauth-success" | "/privacy-policy" | "/profile" | "/suites" | "/terms";
 		RouteParams(): {
 			
 		};
 		LayoutParams(): {
 			"/": Record<string, never>;
+			"/about": Record<string, never>;
 			"/access": Record<string, never>;
 			"/admin": Record<string, never>;
 			"/dining": Record<string, never>;
 			"/experience": Record<string, never>;
 			"/my-bookings": Record<string, never>;
 			"/oauth-success": Record<string, never>;
+			"/privacy-policy": Record<string, never>;
 			"/profile": Record<string, never>;
-			"/suites": Record<string, never>
+			"/suites": Record<string, never>;
+			"/terms": Record<string, never>
 		};
-		Pathname(): "/" | "/access" | "/admin" | "/dining" | "/experience" | "/my-bookings" | "/oauth-success" | "/profile" | "/suites";
+		Pathname(): "/" | "/about" | "/access" | "/admin" | "/dining" | "/experience" | "/my-bookings" | "/oauth-success" | "/privacy-policy" | "/profile" | "/suites" | "/terms";
 		ResolvedPathname(): `${"" | `/${string}`}${ReturnType<AppTypes['Pathname']>}`;
-		Asset(): "/images/logo.png" | "/robots.txt" | string & {};
+		Asset(): "/.DS_Store" | "/apple-touch-icon.png" | "/favicon-96x96.png" | "/favicon.ico" | "/favicon.svg" | "/images/.DS_Store" | "/images/logo.png" | "/robots.txt" | "/site.webmanifest" | "/web-app-manifest-192x192.png" | "/web-app-manifest-512x512.png" | string & {};
 	}
 }

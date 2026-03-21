@@ -172,6 +172,32 @@
       </form>
     </section>
   </div>
+
+  <div class="footer__disclaimer text-center mt-4 px-3">
+    <hr />
+    <p class="small text-white mb-1">
+      <strong>Disclaimer:</strong> Skye Suites is a
+      <strong>fictional hotel facility</strong>
+      created for
+      <em>academic and proof-of-concept (POC)</em> purposes only.
+    </p>
+    <p class="small text-white mb-1">
+      This web app is part of a student project for <strong>MO-IT149</strong> at
+      <strong>Mapua Malayan Digital College</strong> and does not represent a real
+      business, contact us information, booking service, or commercial entity.
+    </p>
+    <p class="small text-white mb-0">
+      Learn more about this project:
+      <a href="/about" class="text-white text-decoration-underline">About</a> |
+      <a href="/terms" class="text-white text-decoration-underline"
+        >Terms of Service</a
+      >
+      |
+      <a href="/privacy-policy" class="text-white text-decoration-underline"
+        >Privacy Policy</a
+      >
+    </p>
+  </div>
 </footer>
 <!-- ########## End Footer Block ########## -->
 
@@ -284,4 +310,12 @@
     </div>
   </div>
 </div>
+
 <!-- ##########  End Toast Container ########## -->
+
+<style>
+  .footer__disclaimer {
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+</style>

@@ -61,10 +61,6 @@
   }
 </script>
 
-<svelte:head>
-  <title>Suites | Skye Suites</title>
-</svelte:head>
-
 <main class="suites-main">
   <!-- Junior Suite Section -->
   <section
@@ -350,12 +346,6 @@
 </main>
 
 <style>
-  .suites-container {
-    max-width: 1200px;
-    margin-inline: auto;
-    padding-inline: 1rem;
-  }
-
   .suites-main {
     padding: 3rem 0;
   }
@@ -468,11 +458,6 @@
     /* padding-left: 1.3rem; */
     text-align: left;
     font-weight: 300;
-  }
-
-  .suites-features-icon {
-    color: var(--color-text-dark);
-    margin-right: 0.6rem;
   }
 
   /* Book Button */

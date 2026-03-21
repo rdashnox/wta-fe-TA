@@ -19,8 +19,8 @@
       const res = await fetch(
         `${import.meta.env.VITE_API_BASE}/users/profile`,
         {
-          headers: { Authorization: `Bearer ${token}` }
-        }
+          headers: { Authorization: `Bearer ${token}` },
+        },
       );
 
       if (!res.ok) throw new Error("Failed to fetch profile");
@@ -47,6 +47,10 @@
     }
   });
 </script>
+
+<svelte:head>
+  <meta name="robots" content="noindex, nofollow" />
+</svelte:head>
 
 {#if loading}
   <div class="d-flex justify-content-center align-items-center vh-100">

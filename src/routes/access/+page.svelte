@@ -158,10 +158,6 @@
   }
 </script>
 
-<svelte:head>
-  <title>Access | Skye Suites</title>
-</svelte:head>
-
 <main class="section">
   <div class="section__container">
     <!-- Left Column Element -->

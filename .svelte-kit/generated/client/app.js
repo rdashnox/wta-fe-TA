@@ -11,21 +11,27 @@ export const nodes = [
 	() => import('./nodes/7'),
 	() => import('./nodes/8'),
 	() => import('./nodes/9'),
-	() => import('./nodes/10')
+	() => import('./nodes/10'),
+	() => import('./nodes/11'),
+	() => import('./nodes/12'),
+	() => import('./nodes/13')
 ];
 
 export const server_loads = [];
 
 export const dictionary = {
 		"/": [2],
-		"/access": [3],
-		"/admin": [4],
-		"/dining": [5],
-		"/experience": [6],
-		"/my-bookings": [7],
-		"/oauth-success": [8],
-		"/profile": [9],
-		"/suites": [10]
+		"/about": [3],
+		"/access": [4],
+		"/admin": [5],
+		"/dining": [6],
+		"/experience": [7],
+		"/my-bookings": [8],
+		"/oauth-success": [9],
+		"/privacy-policy": [10],
+		"/profile": [11],
+		"/suites": [12],
+		"/terms": [13]
 	};
 
 export const hooks = {

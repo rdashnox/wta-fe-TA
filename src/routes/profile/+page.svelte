@@ -23,6 +23,10 @@
   });
 </script>
 
+<svelte:head>
+  <meta name="robots" content="noindex, nofollow" />
+</svelte:head>
+
 {#if profile}
   <div class="container py-5">
     <div class="row justify-content-center">

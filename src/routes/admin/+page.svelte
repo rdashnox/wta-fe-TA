@@ -97,6 +97,10 @@
   }
 </script>
 
+<svelte:head>
+  <meta name="robots" content="noindex, nofollow" />
+</svelte:head>
+
 <div class="container mt-5 mb-5">
   <div class="card shadow border-0 overflow-hidden">
     <div class="card-header p-4" style="background:#2c2c2c;color:white;">

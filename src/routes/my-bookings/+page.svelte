@@ -15,7 +15,7 @@
   let selectedBooking = null;
 
   $: if ($user === null) {
-    goto("/"); 
+    goto("/");
   }
 
   onMount(async () => {
@@ -80,6 +80,10 @@
     // await fetchBookings();
   }
 </script>
+
+<svelte:head>
+  <meta name="robots" content="noindex, nofollow" />
+</svelte:head>
 
 <div class="container py-5">
   <h2 class="mb-4">My Bookings</h2>

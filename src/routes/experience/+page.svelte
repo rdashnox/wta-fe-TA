@@ -1,7 +1,3 @@
-<svelte:head>
-  <title>Experience | Skye Suites</title>
-</svelte:head>
-
 <main class="experience-main">
   <!-- Wellness Section -->
   <section class="wellness" aria-labelledby="wellness-heading">
@@ -401,4 +397,3 @@
     }
   }
 </style>
-

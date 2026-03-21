@@ -1,7 +1,3 @@
-<svelte:head>
-  <title>Home | Skye Suites</title>
-</svelte:head>
-
 <main class="index-main" id="main-content">
   <section class="index-services" aria-label="Main services offered">
     <div class="container index-services__container">

@@ -30,10 +30,6 @@
   });
 </script>
 
-<svelte:head>
-  <title>Dining | Skye Suites</title>
-</svelte:head>
-
 <main class="dining-main container-fluid p-0">
   <!-- Breakfast -->
   <section class="content-title" aria-label="Breakfast dining section">
