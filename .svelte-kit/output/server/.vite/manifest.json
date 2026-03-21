@@ -32,13 +32,13 @@
       "_state.svelte.js"
     ]
   },
-  "_config.js": {
-    "file": "chunks/config.js",
-    "name": "config"
-  },
   "_environment.js": {
     "file": "chunks/environment.js",
     "name": "environment"
+  },
+  "_escaping.js": {
+    "file": "chunks/escaping.js",
+    "name": "escaping"
   },
   "_exports.js": {
     "file": "chunks/exports.js",
@@ -59,6 +59,7 @@
     "file": "chunks/index2.js",
     "name": "index",
     "imports": [
+      "_escaping.js",
       "_false.js"
     ]
   },
@@ -121,9 +122,10 @@
     "src": "node_modules/@sveltejs/kit/src/runtime/components/svelte-5/error.svelte",
     "isEntry": true,
     "imports": [
-      "_index2.js",
+      "_escaping.js",
       "_state.svelte.js",
-      "_client.js"
+      "_client.js",
+      "_index2.js"
     ]
   },
   "node_modules/@sveltejs/kit/src/runtime/server/index.js": {
@@ -159,12 +161,12 @@
       "_utils.js",
       "_root.js",
       "_state.svelte.js",
+      "_escaping.js",
       "_client.js",
       "_auth.js",
       "_validationSchemas.js",
       "_LoginModal.svelte_svelte_type_style_lang.js",
-      "_index.js",
-      "_config.js"
+      "_index.js"
     ],
     "css": [
       "_app/immutable/assets/_layout.vNKYNnOX.css"
@@ -191,7 +193,8 @@
     "src": "src/routes/access/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index2.js"
+      "_index2.js",
+      "_escaping.js"
     ],
     "css": [
       "_app/immutable/assets/_page.CdsFEmmJ.css"
@@ -210,6 +213,7 @@
     "isEntry": true,
     "imports": [
       "_index2.js",
+      "_escaping.js",
       "_exports.js",
       "_utils.js",
       "_root.js",
@@ -300,7 +304,7 @@
     "src": "src/routes/suites/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index2.js",
+      "_escaping.js",
       "_validationSchemas.js",
       "_exports.js",
       "_utils.js",
@@ -318,8 +322,7 @@
     "src": "src/routes/terms/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_index2.js",
-      "_config.js"
+      "_escaping.js"
     ]
   }
 }

@@ -1,4 +1,4 @@
-import { e as escape_html } from "../../../chunks/index2.js";
+import { e as escape_html } from "../../../chunks/escaping.js";
 import "clsx";
 import "../../../chunks/validationSchemas.js";
 import "@sveltejs/kit/internal";

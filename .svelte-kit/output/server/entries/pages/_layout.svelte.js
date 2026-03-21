@@ -1,4 +1,4 @@
-import { g as getContext, s as store_get, e as escape_html, u as unsubscribe_stores, a as attr_class, b as attr, c as stringify, f as fallback, d as bind_props, h as head, i as slot } from "../../chunks/index2.js";
+import { g as getContext, s as store_get, u as unsubscribe_stores, a as attr_class, b as attr, c as stringify, f as fallback, d as bind_props, h as head, e as slot } from "../../chunks/index2.js";
 import "clsx";
 import "@sveltejs/kit/internal";
 import "../../chunks/exports.js";
@@ -6,12 +6,12 @@ import "../../chunks/utils.js";
 import "@sveltejs/kit/internal/server";
 import "../../chunks/root.js";
 import "../../chunks/state.svelte.js";
+import { e as escape_html } from "../../chunks/escaping.js";
 import { g as goto } from "../../chunks/client.js";
 import { a as authUpdated, u as user, i as isAuthenticated, b as accessToken } from "../../chunks/auth.js";
 import "../../chunks/validationSchemas.js";
 import "../../chunks/LoginModal.svelte_svelte_type_style_lang.js";
 import { w as writable } from "../../chunks/index.js";
-import { s as siteConfig } from "../../chunks/config.js";
 const getStores = () => {
   const stores$1 = getContext("__svelte__");
   return {
@@ -149,6 +149,11 @@ function Toast($$renderer, $$props) {
     if ($$store_subs) unsubscribe_stores($$store_subs);
   });
 }
+const siteConfig = {
+  siteName: "Skye Suites Hotel Facility System Academic Proof-of-Concept",
+  // Use Firebase final hosting URL in prod
+  siteUrl: "https://wta-fe.web.app"
+};
 function _layout($$renderer, $$props) {
   $$renderer.component(($$renderer2) => {
     var $$store_subs;
@@ -163,7 +168,7 @@ function _layout($$renderer, $$props) {
     })();
     dynamicTitle = {
       "/": `Home | ${siteConfig.siteName}`,
-      "/about": `Aout | ${siteConfig.siteName}`,
+      "/about": `About | ${siteConfig.siteName}`,
       "/suites": `Suites | ${siteConfig.siteName}`,
       "/experience": `Experience | ${siteConfig.siteName}`,
       "/dining": `Dining | ${siteConfig.siteName}`,
@@ -193,7 +198,7 @@ function _layout($$renderer, $$props) {
       $$renderer3.title(($$renderer4) => {
         $$renderer4.push(`<title>${escape_html(dynamicTitle)}</title>`);
       });
-      $$renderer3.push(`<meta name="description" content="Skye Suites is an academic demonstration project showcasing a Proof-of-Concept hotel facility system built with modern web technologies. This platform simulates room reservations, contact messaging, subscription and guest experiences for educational purposes only."/> <meta name="keywords" content="academic project, hotel booking system, SvelteKit demo, JAMstack, hospitality system, educational web application"/> <meta name="author"${attr("content", siteConfig?.siteName)}/> <meta name="application-name"${attr("content", siteConfig?.siteName)}/> <meta name="category" content="Academic Project, Frontend Software Development Simulation"/> <meta name="application-purpose" content="This website is a non-commercial academic project intended for demonstration and educational use only. It does not provide real hotel services, bookings, or financial transactions."/> <meta name="robots" content="index, follow"/> <meta property="og:title" content="Skye Suites | Academic and Proof-of-Concept Hotel Facility System Web App"/> <meta property="og:description" content="A simulated hotel booking system developed for academic, proof-of-concept and demonstration purposes."/> <meta property="og:type" content="website"/> <meta property="og:url"${attr("content", siteConfig?.siteUrl)}/> <meta name="classification" content="Academic Project"/> <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"/> <link rel="icon" type="image/svg+xml" href="/favicon.svg"/> <link rel="shortcut icon" href="/favicon.ico"/> <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-precomposed.png"/> <meta name="apple-mobile-web-app-title" content="Sky  Suites"/> <link rel="manifest" href="/site.webmanifest"/> <link rel="shortcut icon" href="/favicon.ico"/> <link rel="canonical"${attr("href", siteConfig?.siteUrl)}/> `);
+      $$renderer3.push(`<meta name="description" content="Skye Suites is an academic demonstration project showcasing a Proof-of-Concept hotel facility system built with modern web technologies. This platform simulates room reservations, contact messaging, subscription and guest experiences for educational purposes only."/> <meta name="keywords" content="academic project, hotel booking system, SvelteKit demo, JAMstack, hospitality system, educational web application"/> <meta name="author"${attr("content", siteConfig?.siteName)}/> <meta name="application-name"${attr("content", siteConfig?.siteName)}/> <meta name="category" content="Academic Project, Frontend Software Development Simulation"/> <meta name="application-purpose" content="This website is a non-commercial academic project intended for demonstration and educational use only. It does not provide real hotel services, bookings, or financial transactions."/> <meta name="robots" content="index, follow"/> <meta property="og:title" content="Skye Suites | Academic and Proof-of-Concept Hotel Facility System Web App"/> <meta property="og:description" content="A simulated hotel booking system developed for academic, proof-of-concept and demonstration purposes."/> <meta property="og:type" content="website"/> <meta property="og:url"${attr("content", siteConfig?.siteUrl)}/> <meta property="og:image"${attr("content", siteConfig?.siteUrl + "/og-image.png")}/> <meta name="classification" content="Academic Project"/> <meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:title" content="Skye Suites | Academic Demo"/> <meta name="twitter:description" content="Academic Proof-of-Concept hotel system."/> <meta name="twitter:image"${attr("content", siteConfig?.siteUrl + "/og-image.png")}/> <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96"/> <link rel="icon" type="image/svg+xml" href="/favicon.svg"/> <link rel="shortcut icon" href="/favicon.ico"/> <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-precomposed.png"/> <meta name="apple-mobile-web-app-title" content="Sky  Suites"/> <link rel="manifest" href="/site.webmanifest"/> <link rel="shortcut icon" href="/favicon.ico"/> <meta name="theme-color" content="#123456"/> <link rel="canonical"${attr("href", siteConfig?.siteUrl)}/> `);
       $$renderer3.push(`<script type="application/ld+json">
     {JSON.stringify({
       "@context": "https://schema.org",

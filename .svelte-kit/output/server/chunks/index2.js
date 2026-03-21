@@ -1,3 +1,4 @@
+import { e as escape_html } from "./escaping.js";
 import { clsx as clsx$1 } from "clsx";
 import { B as BROWSER } from "./false.js";
 import * as devalue from "devalue";
@@ -1984,22 +1985,6 @@ const PASSIVE_EVENTS = ["touchstart", "touchmove"];
 function is_passive_event(name) {
   return PASSIVE_EVENTS.includes(name);
 }
-const ATTR_REGEX = /[&"<]/g;
-const CONTENT_REGEX = /[&<]/g;
-function escape_html(value, is_attr) {
-  const str = String(value ?? "");
-  const pattern = is_attr ? ATTR_REGEX : CONTENT_REGEX;
-  pattern.lastIndex = 0;
-  let escaped = "";
-  let last = 0;
-  while (pattern.test(str)) {
-    const i = pattern.lastIndex - 1;
-    const ch = str[i];
-    escaped += str.substring(last, i) + (ch === "&" ? "&amp;" : ch === '"' ? "&quot;" : "&lt;");
-    last = i + 1;
-  }
-  return escaped + str.substring(last);
-}
 const replacements = {
   translate: /* @__PURE__ */ new Map([
     [true, "yes"],
@@ -3108,71 +3093,70 @@ function derived(fn) {
   };
 }
 export {
-  hydration_failed as $,
-  block as A,
+  clear_text_content as $,
+  branch as A,
   BOUNDARY_EFFECT as B,
   COMMENT_NODE as C,
-  branch as D,
-  create_text as E,
-  pause_effect as F,
-  current_batch as G,
+  create_text as D,
+  pause_effect as E,
+  current_batch as F,
+  move_effect as G,
   HYDRATION_ERROR as H,
-  move_effect as I,
-  defer_effect as J,
-  set_active_effect as K,
-  set_active_reaction as L,
-  set_component_context as M,
-  Batch as N,
-  handle_error as O,
-  active_reaction as P,
-  component_context as Q,
-  internal_set as R,
-  destroy_effect as S,
-  invoke_error_boundary as T,
-  svelte_boundary_reset_onerror as U,
-  HYDRATION_START_FAILED as V,
-  EFFECT_TRANSPARENT as W,
-  EFFECT_PRESERVED as X,
-  define_property as Y,
-  init_operations as Z,
-  get_first_child as _,
+  defer_effect as I,
+  set_active_effect as J,
+  set_active_reaction as K,
+  set_component_context as L,
+  Batch as M,
+  handle_error as N,
+  active_reaction as O,
+  component_context as P,
+  internal_set as Q,
+  destroy_effect as R,
+  invoke_error_boundary as S,
+  svelte_boundary_reset_onerror as T,
+  HYDRATION_START_FAILED as U,
+  EFFECT_TRANSPARENT as V,
+  EFFECT_PRESERVED as W,
+  define_property as X,
+  init_operations as Y,
+  get_first_child as Z,
+  hydration_failed as _,
   attr_class as a,
-  clear_text_content as a0,
-  component_root as a1,
-  array_from as a2,
-  is_passive_event as a3,
-  push$1 as a4,
-  pop$1 as a5,
-  set as a6,
-  LEGACY_PROPS as a7,
-  flushSync as a8,
-  mutable_source as a9,
-  render as aa,
-  setContext as ab,
-  derived as ac,
+  component_root as a0,
+  array_from as a1,
+  is_passive_event as a2,
+  push$1 as a3,
+  pop$1 as a4,
+  set as a5,
+  LEGACY_PROPS as a6,
+  flushSync as a7,
+  mutable_source as a8,
+  render as a9,
+  setContext as aa,
+  derived as ab,
   attr as b,
   stringify as c,
   bind_props as d,
-  escape_html as e,
+  slot as e,
   fallback as f,
   getContext as g,
   head as h,
-  slot as i,
-  ensure_array_like as j,
-  safe_not_equal as k,
-  HYDRATION_END as l,
-  HYDRATION_START as m,
+  ensure_array_like as i,
+  safe_not_equal as j,
+  HYDRATION_END as k,
+  HYDRATION_START as l,
+  HYDRATION_START_ELSE as m,
   noop as n,
-  HYDRATION_START_ELSE as o,
-  get_next_sibling as p,
-  effect_tracking as q,
-  get as r,
+  get_next_sibling as o,
+  effect_tracking as p,
+  get as q,
+  render_effect as r,
   store_get as s,
-  render_effect as t,
+  source as t,
   unsubscribe_stores as u,
-  source as v,
-  untrack as w,
-  increment as x,
-  queue_micro_task as y,
-  active_effect as z
+  untrack as v,
+  increment as w,
+  queue_micro_task as x,
+  active_effect as y,
+  block as z
 };

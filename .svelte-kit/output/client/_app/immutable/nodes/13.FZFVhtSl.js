@@ -1,0 +1,6 @@
+import{a as l,f as p}from"../chunks/BS0gRwNc.js";import"../chunks/k44R_x1r.js";import{ap as a,aq as i,ar as t,as as r}from"../chunks/BZmhVH3C.js";var m=p(`<main class="container py-5"><h1>Terms of Service</h1> <p>Welcome to <strong></strong>. This website is an <strong>academic demo project</strong> for learning purposes only. No real bookings
+    or payments are processed.</p> <h2>Use of the Site</h2> <p>By using this site, you agree to use it solely for educational purposes.
+    Real bookings or commercial use is prohibited.</p> <h2>Intellectual Property</h2> <p>All content, images, and logos belong to this demo project. Commercial use
+    is not allowed.</p> <h2>Limitation of Liability</h2> <p>The developers are not liable for any misuse or misunderstanding of demo
+    content.</p> <h2>Privacy</h2> <p>No real data is collected. See <a href="/privacy-policy">Privacy Policy</a> for
+    more information.</p> <h2>Modifications</h2> <p>Terms may be updated at any time. Changes will appear on this page.</p> <h2>Related Pages</h2> <ul><li><a href="/about">About</a></li> <li><a href="/privacy-policy">Privacy Policy</a></li></ul></main>`);function g(s){var e=m(),o=a(i(e),2),n=a(i(o));n.textContent=siteConfig.siteName,t(3),r(o),t(24),r(e),l(s,e)}export{g as component};
