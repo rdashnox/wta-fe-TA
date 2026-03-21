@@ -33,5 +33,3 @@ dist/
 .svelte-kit/
 .firebase/
 
-package-lock.json
-
