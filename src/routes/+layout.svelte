@@ -6,6 +6,7 @@
   import { fade } from "svelte/transition";
 
   import { goto } from "$app/navigation";
+  import { browser } from "$app/environment";
   import { user, accessToken } from "$lib/stores/auth";
 
   import TopNav from "$lib/components/TopNav.svelte";
@@ -15,7 +16,7 @@
   import Toast from "$lib/components/Toast.svelte";
   import { siteConfig } from "$lib/config";
 
-  export const prerender = true;
+  export const prerender = false;
 
   $: path = $page.url.pathname;
 
@@ -68,27 +69,24 @@
     }[path] || "Skye Suites Academic Proof-of-Concept Demo";
 
   // === Auth Guard Logic ===
-  $: {
+  $: if (browser) {
     const hasToken = $accessToken;
     const currentUser = $user;
 
     const isProtected = protectedRoutes.some((r) => path.startsWith(r));
     const isAdminRoute = adminRoutes.some((r) => path.startsWith(r));
 
-    // Redirect if protected route but not logged in
     if (isProtected && !hasToken && path !== "/") {
-      goto("/");
+      if (path !== "/") goto("/");
     }
 
-    // Redirect if admin route but not admin
     if (
       isAdminRoute &&
       (currentUser === null || currentUser.role !== "admin")
     ) {
-      goto("/");
+      if (path !== "/") goto("/");
     }
 
-    // Redirect logged-in user from home → profile
     if (path === "/" && hasToken) {
       goto("/profile");
     }
